@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+
+$( document ).ready(function() {
+   $('.message a').click(function(){
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+	});
+});

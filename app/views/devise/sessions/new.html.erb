@@ -1,35 +1,11 @@
 <div class="login-page"><!-- Login Page -->
 <div class = "form">
 
-      <!-- Register Form Begin -->
-      <form class="register-form">
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
-      <input type="text" placeholder="email address"/>
-      <button>create</button>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
-      </form>
-    <!-- End Register Form -->
+  <!-- render registration form -->
+    <%= render :partial => "/devise/partials/register_form"%>
+  <!-- end register form -->
   <!-- Login Form Begin -->
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'login-form'}) do |f| %>
-     
-        <%= f.email_field :email, autofocus: true , placeholder: "email"%>
-        <%= f.password_field :password, autocomplete: "off", placeholder:"password" %>
-       
-        <% if devise_mapping.rememberable? -%>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-          </div>
-        <% end -%>
-
-        <div class="actions">
-          <%= f.submit "Log in" , class: 'button'%>
-        </div>
-        
-        <p class="message">Not registered? <a href="#">Create an account</a></p>
-
-    <% end %><!-- Login Form End -->
+    <%= render :partial => "/devise/partials/login_form"%>
 
 
  </div> 

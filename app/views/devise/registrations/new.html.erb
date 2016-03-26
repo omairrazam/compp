@@ -1,4 +1,29 @@
-<h2>Sign up</h2>
+<style type="text/css">
+  .form .register-form {
+  display: inline;
+}
+.form .login-form {
+  display: none;
+}
+</style>
+
+
+<div class="login-page"><!-- Login Page -->
+<div class = "form">
+
+  <!-- render registration form -->
+    <%= render :partial => "/devise/partials/register_form"%>
+  <!-- end register form -->
+  <!-- Login Form Begin -->
+    <%= render :partial => "/devise/partials/login_form"%>
+
+
+ </div> 
+</div><!-- End Login Page -->
+
+
+
+<!--<h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -26,4 +51,4 @@
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= render "devise/shared/links" %>-->

@@ -2,13 +2,15 @@
             <div class="post-container">
               <div class="post-option">
                 <ul class="list-options">
+
+                  <li><%= link_to 'Details', photo %></li>
                   <li><%= link_to 'Edit', edit_photo_path(photo) %></li>
                   <li><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></li>
                   
                 </ul>
               </div>
               <div class="post-image">
-                <a href="img/fransisca-post-image01-big.jpg" class="img-group-gallery" title="Lorem ipsum dolor sit amet"><%= image_tag photo.image.url(:medium), :class => "img-responsive" %><!--<img src="img/fransisca-post-image01.jpg" class="img-responsive" alt="fransisca gallery">--></a>
+                <a href="<%=  photo.image.url(:large)%>" class="img-group-gallery" title=""><%= image_tag photo.image.url(:medium), :class => "img-responsive" %><!--<img src="img/fransisca-post-image01.jpg" class="img-responsive" alt="fransisca gallery">--></a>
               </div>
               <div class="post-meta">
                 <button type="button" class="btn btn-success btn-block">Take Print</button>

@@ -1,6 +1,93 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>
 
 <%= image_tag @photo.image.url(:medium) %>
 
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', photos_path %>
+<%= link_to 'Back', photos_path %> -->
+
+<!-- begin:content -->
+    <div id="content">
+      <div class="container">
+        <div class="row">
+          <!-- begin:sidebar -->
+          <div class="col-md-3 col-md-push-9 col-sm-4 col-sm-push-8 col-xs-12">
+            <!-- begin:detail-option -->
+            <div class="row">
+              <div class="col-md-12">
+                <div class="post-container">
+                  <div class="post-content">
+                    <div class="detail-option">
+                      <ul class="list-options">
+                        <li><a href="#"><i class="fa fa-share-alt"></i> <span>Share</span></a></li>
+                        <li><a href="#"><i class="fa fa-comment"></i> <span>Comment</span></a></li>
+                        <li><a href="#"><i class="fa fa-cloud-download"></i> <span>Download</span></a></li>
+                        <li><a href="#"><i class="fa fa-heart"></i> <span>Love</span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end:detail-option -->
+          </div>
+          <!-- end:sidebar -->
+
+          <!-- begin:article -->
+          <div class="col-md-9 col-md-pull-3 col-sm-8 col-sm-pull-4 col-xs-12">
+            <!-- begin:article-content -->
+            <div class="row">
+              <div class="col-md-12">
+                <div class="post-container">
+                  <div class="post-content">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="detail-meta">
+                          <span><em>in</em> <a href="#">Photo</a></span>
+                          <span><em>by</em> <a href="#">Frans</a></span>
+                          <span><em>December 04, 2014</em></span>
+                          
+                        </div>
+                        <div class="detail-heading-title">
+                          <h2>Lorem ipsum dolor sit amet.</h2>
+                        </div>
+                        <%= image_tag @photo.image.url(:large), :class =>"img-responsive" %>
+                        
+                        <br>
+                        <div class="detail-meta">
+                          <span><em>Tags : </em> <a href="#">Tower</a>, <a href="#">City</a>, <a href="#">Building</a></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end:article-content -->
+
+            <!-- begin:description -->
+            <div class="row">
+              <div class="col-md-12">
+                <div class="post-container">
+                  <div class="post-content">
+                    <div class="heading-title">
+                      <h3>Description</h3>
+                    </div>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end:description -->
+          </div>
+          <!-- end:article -->
+          
+        </div>
+      </div>
+    </div>
+    <!-- end:content -->

@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
+  get 'carts/show'
+
   resources :photos
   devise_for :users
   resources :widgets
 
+
+resource :cart, only: [:show] do
+  put 'add/:photo_id', to: 'carts#add', as: :add_to
+  put 'remove/:photo_id', to: 'carts#remove', as: :remove_from
+end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

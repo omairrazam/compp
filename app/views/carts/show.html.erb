@@ -1,0 +1,116 @@
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<script>
+  $( document ).ready(function() {
+    $('a[data-target]').click (function(e){
+      e.preventDefault();
+
+      $this = $(this);
+
+      if ($this.data('target') == 'Add to'){
+        url = $this.data('addurl')
+        new_target = "Remove from"
+      }
+      else{
+        url = $this.data('removeurl')
+        new_target = "Add to"
+      }
+
+      $.ajax({url: url,type: 'put', success: function(data){
+        $('.cart-count').html(data);
+        $this.find('span').html(new_target);
+        $this.data('target', new_target);
+
+      }});
+    });
+
+
+
+    var table = $('#cart').DataTable();
+    var oTable = $('#cart').dataTable({});
+
+    $('#cart tbody').on( 'click', 'button.delete_icon', function () {
+      table
+          .row( $(this).parents('tr') )
+          .remove()
+          .draw();
+    });
+
+    $('#cart tbody').on( 'click', 'input.item_qty', function (){
+
+      var row = table.row( $(this).parents('tr') );
+      var qtyCell = table.cell({ row: table.row( row ).index(), column: 2 }).node();
+      var priceCell = table.cell({ row: table.row( row ).index(), column: 3 }).node();
+      var subTotCell = table.cell({ row: table.row( row ).index(), column: 4 }).node();
+      var qty = $('input', qtyCell).val();
+      var price = priceCell.innerHTML;
+      var subTot = qty * price;
+      //alert(price);
+      oTable.fnUpdate( subTot, table.row( row ).index(), 4 );
+      var netPrice = table.column( 4 ).data().sum();
+      $('#totAmount').html('<strong>Total:Rs'+netPrice+'</strong>');
+
+    });
+  });
+</script>
+
+<div class="container">
+  <table id="cart" class="table table-hover table-condensed">
+    <thead>
+    <tr>
+      <th style="width:40%">Product</th>
+      <th style="width:10%">Size</th>
+      <th style="width:8%">Quantity</th>
+      <th style="width:8%">price</th>
+      <th style="width:16%" class="text-center">Subtotal</th>
+      <th style="width:10%"></th>
+    </tr>
+    </thead>
+    <tbody>
+        <% @cart_photos.each do |photo|%>
+          <%= render :partial => 'row_show',:locals => {:photo => photo}%>
+        <%end%>
+    </tbody>
+    <tfoot>
+      <tr class="visible-xs">
+        <td class="text-center"><strong>Total 1.99</strong></td>
+      </tr>
+      <tr>
+        <td><a href="/" class="btn btn-warning"><i class="fa fa-angle-left"></i> Go to Gallery</a></td>
+        <td colspan="2" class="hidden-xs"></td>
+        <td class="hidden-xs text-center" id = 'totAmount'><strong>Total -</strong></td>
+        <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+
+
+
+
+<!--
+<div id="mycart" class="small-10 small-centered medium-8 large-8 column">
+  <div class="p1 glassy-bg mb1 text-center radius-l1 radius-r1">
+    <h4>My Cart</h4>
+    <p class="mb0"> You've selected <span class="cart-count"><%=current_user.cart_count%></span> photos!</p>
+  </div>
+
+  <% @cart_photos.each do |photo|%>
+  <div data-equalizer class="cart-movie large-12 column mb1">
+    <div class="column large-2 text-center p0" data-equalizer-watch>
+      <%=link_to photo do%>
+        <%=image_tag photo.image(:thumb), class: "radius-l1"%>
+      <%end%>
+    </div>
+    <div class="column large-7 glassy-bg text-center" data-equalizer-watch>
+        <p class="scale ptm"> <%#= movie.title %> </p>
+    </div>
+    <div class="column large-3 primary-bg text-center radius-r1" data-equalizer-watch>
+      <%=link_to "" , data: {targetUrl: remove_from_cart_path(photo)} do%>
+        <i class="fi-x right">Remove</i>
+      <%end%>
+      <h4 class="scale">$ <%= 100 %></h4>
+    </div>
+  </div>
+  <%end%>
+</div>-->

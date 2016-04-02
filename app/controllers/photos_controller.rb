@@ -1,6 +1,9 @@
+require 'cart_base'
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  include Cart
+  #before_action :cart_action, only: [:show]
   # GET /photos
   # GET /photos.json
   def index
@@ -10,7 +13,8 @@ class PhotosController < ApplicationController
   # GET /photos/1
   # GET /photos/1.json
   def show
-
+       @photo = Photo.find(params[:id])
+       @cart_action = @photo.cart_action current_user.try :id
   end
 
   # GET /photos/new
@@ -57,13 +61,16 @@ class PhotosController < ApplicationController
   # DELETE /photos/1
   # DELETE /photos/1.json
   def destroy
+    remove_from_cart(@photo.id)
     @photo.destroy
+
     respond_to do |format|
       format.html { redirect_to photos_url, notice: 'Photo was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_photo

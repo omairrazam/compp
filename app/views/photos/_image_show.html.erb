@@ -13,6 +13,16 @@
                 <a href="<%=  photo.image.url(:large)%>" class="img-group-gallery" title=""><%= image_tag photo.image.url(:medium), :class => "img-responsive" %><!--<img src="img/fransisca-post-image01.jpg" class="img-responsive" alt="fransisca gallery">--></a>
               </div>
               <div class="post-meta">
+              <%if user_signed_in?%>
+
+                <%=link_to "", class: "btn", data: {target: @cart_action, addUrl: add_to_cart_path(photo), removeUrl: remove_from_cart_path(photo)} do%>
+                  
+                  <i class="fi-shopping-cart"></i>
+                  <span><%=@cart_action%></span> Cart
+                  
+                <%end%>
+
+              <%end%>
                 <button type="button" class="btn btn-success btn-block">Take Print</button>
               </div>
               <div class="post-desc">

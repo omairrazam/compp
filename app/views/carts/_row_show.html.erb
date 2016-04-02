@@ -1,0 +1,25 @@
+
+<tr>
+  <td data-th="Product">
+    <div class="row">
+      <div class="col-sm-2 hidden-xs">
+        <%=link_to photo do%>
+          <%=image_tag photo.image(:thumb), class: "img-responsive"%>
+        <%end%>
+      </div> 
+    </div>
+  </td>
+  <td data-th="Size"></td>
+  <td data-th="Quantity">
+    <input type="number" id = 'number' name = "num" min = "1" class="form-control text-center item_qty" value="<%= photo.cart_item.qty %>">
+  </td>
+  <td data-th="Price"><%= photo.cart_item.unit_price %></td>
+  <td data-th="Subtotal" class="text-center"><%= photo.cart_item.item_tot_price %></td>
+  <td class="actions" data-th="">
+    <%=link_to "delete", class: "btn", data: {target: '', removeUrl: remove_from_cart_path(photo)} do %>
+    <i class="fi-shopping-cart"></i>
+        <button class="btn btn-danger btn-sm delete_icon"><i class="fa fa-trash-o"></i></button>
+  <%end%>
+
+  </td>
+</tr>

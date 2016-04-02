@@ -5,6 +5,32 @@
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
 <%= link_to 'Back', photos_path %> -->
 
+<script type="text/javascript" >
+
+  $( document ).ready(function() {
+
+    $('a[data-target]').click (function(e){
+      e.preventDefault();
+      $this = $(this);
+
+      if ($this.data('target') == 'Add to'){
+        url = $this.data('addurl')
+        new_target = "Remove from"
+      }
+      else{
+        url = $this.data('removeurl')
+        new_target = "Add to"
+      }
+
+      $.ajax({url: url,type: 'put', success: function(data){
+        $('.cart-count').html(data);
+        $this.find('span').html(new_target);
+        $this.data('target', new_target);
+
+      }});
+    });
+  });
+</script>
 <!-- begin:content -->
     <div id="content">
       <div class="container">
@@ -51,7 +77,12 @@
                           <h2>Lorem ipsum dolor sit amet.</h2>
                         </div>
                         <%= image_tag @photo.image.url(:large), :class =>"img-responsive" %>
-                        
+                        <%if user_signed_in?%>
+                          <%=link_to "", class: "btn", data: {target: @cart_action, addUrl: add_to_cart_path(@photo), removeUrl: remove_from_cart_path(@photo)} do%>
+                            <i class="fi-shopping-cart"></i>
+                            <span><%=@cart_action%></span> Cart
+                          <%end%>
+                        <%end%>
                         <br>
                         <div class="detail-meta">
                           <span><em>Tags : </em> <a href="#">Tower</a>, <a href="#">City</a>, <a href="#">Building</a></span>

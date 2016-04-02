@@ -18,6 +18,13 @@
             <li><a  href="/">Home</a></li>
             <li><%= link_to 'Upload Photo', new_photo_path %></li>
             <li><%= link_to 'Sign Out',destroy_user_session_path, :method => :delete %></li>
+           
+           <li>
+                <%= link_to cart_path do%>
+                  <i class="fi-shopping-cart"></i>
+                  My Cart
+                  (<span class="cart-count"><%= current_user.cart_count %></span>)
+                <%end%>
             </li>
            
           </ul>

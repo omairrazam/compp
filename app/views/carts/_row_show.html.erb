@@ -16,7 +16,7 @@
   <td data-th="Price"><%= photo.cart_item.unit_price %></td>
   <td data-th="Subtotal" class="text-center"><%= photo.cart_item.item_tot_price %></td>
   <td class="actions" data-th="">
-    <%=link_to "delete", class: "btn", data: {target: '', removeUrl: remove_from_cart_path(photo)} do %>
+    <%=link_to "", class: "btn", data: {target: '', removeUrl: remove_from_cart_path(photo)} do %>
     <i class="fi-shopping-cart"></i>
         <button class="btn btn-danger btn-sm delete_icon"><i class="fa fa-trash-o"></i></button>
   <%end%>

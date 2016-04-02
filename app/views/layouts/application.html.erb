@@ -12,10 +12,68 @@
 
 </head>
 <body>
-<script type="text/javascript">
+<script type="text/javascript" >
+
+  $( document ).ready(function() {
+
+    $('a[data-target]').click (function(e){
+      e.preventDefault();
+      $this = $(this);
+
+      if ($this.data('target') == 'Add to'){
+        url = $this.data('addurl')
+        new_target = "Remove from"
+      }
+      else{
+        url = $this.data('removeurl')
+        new_target = "Add to"
+      }
+
+      $.ajax({url: url,type: 'put', success: function(data){
+        $('.cart-count').html(data);
+        $this.find('span').html(new_target);
+        $this.data('target', new_target);
+
+      }});
+    });
+
+
+    /* carts script */
+
+
+    var table = $('#cart').DataTable();
+    var oTable = $('#cart').dataTable({});
+
+    $('#cart tbody').on( 'click', 'button.delete_icon', function () {
+      table
+          .row( $(this).parents('tr') )
+          .remove()
+          .draw();
+    });
+
+    $('#cart tbody').on( 'click', 'input.item_qty', function (){
+
+      var row = table.row( $(this).parents('tr') );
+      var qtyCell = table.cell({ row: table.row( row ).index(), column: 2 }).node();
+      var priceCell = table.cell({ row: table.row( row ).index(), column: 3 }).node();
+      var subTotCell = table.cell({ row: table.row( row ).index(), column: 4 }).node();
+      var qty = $('input', qtyCell).val();
+      var price = priceCell.innerHTML;
+      var subTot = qty * price;
+      //alert(price);
+      oTable.fnUpdate( subTot, table.row( row ).index(), 4 );
+      var netPrice = table.column( 4 ).data().sum();
+      $('#totAmount').html('<strong>Total:Rs'+netPrice+'</strong>');
+
+    });
+
+  });
+
+
+
+
 
 </script>
-
 <!-- Error Messages only shown for logged in windows-->
 <% if user_signed_in? %>
 	

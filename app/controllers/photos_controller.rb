@@ -7,7 +7,7 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-    @photos = current_user.photos
+    @photos = current_user.photos.includes(:cart_item)
   end
 
   # GET /photos/1

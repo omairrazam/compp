@@ -10,20 +10,26 @@
                 </ul>
               </div>
               <div class="post-image">
-                <a href="<%=  photo.image.url(:large)%>" class="img-group-gallery" title=""><%= image_tag photo.image.url(:medium), :class => "img-responsive" %><!--<img src="img/fransisca-post-image01.jpg" class="img-responsive" alt="fransisca gallery">--></a>
+                <a href="<%=  photo.image.url(:large)%>" class="img-group-gallery" title=""><%= image_tag photo.image.url(:medium), :class => "img-responsive" %>
+                  <!--<img src="img/fransisca-post-image01.jpg" class="img-responsive" alt="fransisca gallery">-->
+                </a>
               </div>
               <div class="post-meta">
-              <%if user_signed_in?%>
+              <%if photo.cart_item.nil? %>
+                <% @cart_action = "Add to" %>
+              <% else %>
+                <% @cart_action = "Remove from" %>
+              <% end %>
+
 
                 <%=link_to "", class: "btn", data: {target: @cart_action, addUrl: add_to_cart_path(photo), removeUrl: remove_from_cart_path(photo)} do%>
-                  
-                  <i class="fi-shopping-cart"></i>
-                  <span><%=@cart_action%></span> Cart
+                  <button type="button" class="btn btn-success btn-block"><span><%=@cart_action%></span> Cart</button>
+
                   
                 <%end%>
 
-              <%end%>
-                <button type="button" class="btn btn-success btn-block">Take Print</button>
+
+
               </div>
               <div class="post-desc">
                 <i class="fa fa-tags"></i> Tags : <a href="#">Tower</a>, <a href="#">City</a>, <a href="#">Building</a>

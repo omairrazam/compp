@@ -1,40 +1,30 @@
+<div class="col-md-3 col-sm-6 col-xs-12" id = "photo_<%= photo.id %>">
+  <div class="post-container">
+    <div class="post-option">
+      <ul class="list-options">
 
+        <li><%= link_to 'Details', photo %></li>
+        <li><%= link_to 'Edit', edit_photo_path(photo) %></li>
+        <li><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></li>
 
-  <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="post-container">
-              <div class="post-option">
-                <ul class="list-options">
-
-                  <li><%= link_to 'Details', photo %></li>
-                  <li><%= link_to 'Edit', edit_photo_path(photo) %></li>
-                  <li><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-                  
-                </ul>
-              </div>
-              <div class="post-image">
-                <a href="<%=  photo.image.url(:large)%>" class="img-group-gallery" title=""><%= image_tag photo.image.url(:medium), :class => "img-responsive" %>
-                  <!--<img src="img/fransisca-post-image01.jpg" class="img-responsive" alt="fransisca gallery">-->
-                </a>
-              </div>
-              <div class="post-meta">
-              <%if photo.cart_item.nil? %>
-                <% @cart_action = "Add to" %>
-              <% else %>
-                <% @cart_action = "Remove from" %>
-              <% end %>
-
-
-                <%=link_to "", class: "btn", data: {target: @cart_action, addUrl: add_to_cart_path(photo), removeUrl: remove_from_cart_path(photo)} do%>
-                  <button type="button" class="btn btn-success btn-block"><span><%=@cart_action%></span> Cart</button>
-
-                  
-                <%end%>
-
-
-
-              </div>
-              <div class="post-desc">
-                <i class="fa fa-tags"></i> Tags : <a href="#">Tower</a>, <a href="#">City</a>, <a href="#">Building</a>
-              </div>
-            </div>
+      </ul>
     </div>
+    <div class="post-image">
+      <a href="<%=  photo.image.url(:large)%>" class="img-group-gallery" title=""><%= image_tag photo.image.url(:medium), :class => "img-responsive" %>
+        <!--<img src="img/fransisca-post-image01.jpg" class="img-responsive" alt="fransisca gallery">-->
+      </a>
+    </div>
+    <div class="post-meta photo_cart_div">
+      <strong>
+        <% if photo.cart_item.nil? %>
+            <%= link_to "Add to cart", carts_add_path(:id => photo.id),remote: true,:method => :post %>
+        <% else %>
+            <%= link_to "Remove from cart", carts_remove_path(:id => photo.id),remote: true, method: :post,data: {confirm: 'Are you sure'}%>
+        <% end %>
+      </strong>
+    </div>
+    <div class="post-desc">
+      <i class="fa fa-tags"></i> Tags : <a href="#">Tower</a>, <a href="#">City</a>, <a href="#">Building</a>
+    </div>
+  </div>
+  </div>

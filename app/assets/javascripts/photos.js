@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+/*$( document ).ready(function() {
 
   $('a[data-target]').click (function(e){
       e.preventDefault();
@@ -22,3 +22,4 @@ $( document ).ready(function() {
       }});
   });
 });
+*/

@@ -1,0 +1,9 @@
+<tr>
+  <td><%= link_to item.photo, :action => "show",
+                  :controller => "photos", :id => item.photo.id %></td>
+  <td><%= pluralize(item.qty, "pc", "pcs") %></td>
+  <td>$<%= sprintf("%0.2f", item.unit_price * item.qty) %></td>
+  <td>
+    <%= link_to "remove",carts_remove_path(:id => item.photo.id), method: :post,data: {confirm: 'Are you sure'}, class: "btn btn-danger btn-xs"%>
+  </td>
+</tr>

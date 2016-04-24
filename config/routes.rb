@@ -3,20 +3,15 @@ Rails.application.routes.draw do
 
   resources :photos
   devise_for :users
-  resources :widgets
-
-
-resource :cart, only: [:show] do
-  put 'add/:photo_id', to: 'carts#add', as: :add_to
-  put 'remove/:photo_id', to: 'carts#remove', as: :remove_from
-end
+  resources :carts
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
 
   root 'photos#index'
-
+  match 'carts/add', to: 'carts#add', via: [:post]
+  match 'carts/remove', to: 'carts#remove', via: [:post]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

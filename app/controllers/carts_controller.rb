@@ -1,40 +1,43 @@
-require 'cart_base'
 class CartsController < ApplicationController
   before_action :authenticate_user!
-  include Cart
+
+  def index
+
+  end
+
   def show
-    photo_ids = $redis.smembers current_user_cart
-    @cart_photos = Photo.includes(:cart_item).find(photo_ids)
+
   end
 
   def add
-    cart_item             = CartItem.new
-    cart_item.qty         = Setting::DEFAULT_QUANTITY
-    cart_item.photo_id    = params[:photo_id]
-    cart_item.unit_price  = Setting::UNIT_PRICE
-    cart_item.item_tot_price = Setting::UNIT_PRICE * Setting::DEFAULT_QUANTITY
-    cart_item.save
+    @cart.add(params[:id])
+    #variable used in add.js.erb
+    @photo_id = params[:id]
+    #debugger
+    if request.xhr?
+    elsif request.post?
+      respond_to do |format|
+      format.html { redirect_to photos_url, notice: 'Successfully Added to cart.' }
+      end
 
-    $redis.sadd current_user_cart, params[:photo_id]
-    render json: current_user.cart_count, status: 200
+    else render
+    end
   end
 
   def remove
-    remove_from_cart(params[:photo_id])
-    render json: current_user.cart_count, status: 200
+    @cart.remove(params[:id])
+    #variable used in add.js.erb
+    @photo_id = params[:id]
+    if request.xhr?
+    elsif request.post?
+      respond_to do |format|
+        format.html { redirect_to photos_url, notice: 'Successfull removed from cart.' }
+      end
+
+    else render
+    end
   end
 
-  def remove_from_cart(photo_id)
-    photo     = Photo.find(photo_id)
-    cart_item = photo.cart_item
-    cart_item.destroy
 
-    $redis.srem current_user_cart, photo_id
-
-  end
-
-  def current_user_cart
-    "cart#{current_user.id}"
-  end
 end
 

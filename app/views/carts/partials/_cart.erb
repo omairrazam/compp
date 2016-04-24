@@ -1,0 +1,33 @@
+<div class = "container">
+  <% if flash[:cart_notice] %>
+      <%= render :partial => "carts/partials/cart_notice" %>
+  <% end %>
+  <h3>Your Shopping Cart</h3>
+  <table class="table table-bordered">
+
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th width = 20></th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <% for item in @cart.cart_items %>
+      <%= render :partial => "carts/partials/item", :object => item %>
+    <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td></td>
+
+        <td><strong>Total: </strong></td>
+        <td>$<%= sprintf("%0.2f", @cart.total) %> ➥</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+

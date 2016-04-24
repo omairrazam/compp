@@ -1,0 +1,2 @@
+$("#cart").html("<%= escape_javascript(render 'carts/partials/cart_nav') %>")
+$("#photo_<%= @photo_id %> .photo_cart_div").html("<strong> <%= escape_javascript( link_to 'Add to cart', carts_add_path(:id => @photo_id),remote: true,:method => :post )%> </strong>")

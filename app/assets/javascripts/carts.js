@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+/*$( document ).ready(function() {
 
     var table = $('#cart').DataTable();
 
@@ -28,7 +28,7 @@ $( document ).ready(function() {
         $('#totAmount').html('<strong>Total:Rs'+netPrice+'</strong>');
 
     });
-
+*/
 
 
 /*

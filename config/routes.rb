@@ -1,19 +1,35 @@
 Rails.application.routes.draw do
-  get 'carts/show'
+  match 'checkout/thank_you', to: 'checkout#thank_you', via: [:get]
+  
+  namespace :admin do
+    resources  :order
+  end
+  
+  resources  :checkout
+  resources  :photos
+  resources  :carts
 
-  resources :photos
   devise_for :users
-  resources :carts
+
+  
+  match 'carts/add', to: 'carts#add', via: [:post]
+  match 'carts/remove', to: 'carts#remove', via: [:post]
+  match 'checkout/place_order', to: 'checkout#place_order', via: [:post]
+  
+  root 'photos#index'
+  
+  #get 'checkout/thank_you'
+  #get 'carts/show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
 
-  root 'photos#index'
-  match 'carts/add', to: 'carts#add', via: [:post]
-  match 'carts/remove', to: 'carts#remove', via: [:post]
+  
+  
+
   # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  #  get 'products/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

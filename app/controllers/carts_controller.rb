@@ -2,18 +2,15 @@ class CartsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-
   end
-
   def show
-
   end
-
+  
   def add
     @cart.add(params[:id])
     #variable used in add.js.erb
     @photo_id = params[:id]
-    #debugger
+    
     if request.xhr?
     elsif request.post?
       respond_to do |format|
@@ -33,11 +30,8 @@ class CartsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to photos_url, notice: 'Successfull removed from cart.' }
       end
-
     else render
     end
   end
-
-
 end
 

@@ -1,13 +1,11 @@
 <%= form_for (@photo), html: { multipart: true } do |f| %>
-
-   <% if @photo.errors.any? %>
+  <% if @photo.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
-
       <ul>
-      <% @photo.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @photo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -15,9 +13,7 @@
   <div class="form-group">
     <%= f.label :image %>
     <%= f.file_field :image %>
-   
   </div>
- 
-  <%= f.submit 'UPLOAD', :class => 'btn btn-primary ' %>
   
+  <%= f.submit 'UPLOAD', :class => 'btn btn-primary ' %>
 <% end %>

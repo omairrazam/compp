@@ -1,0 +1,16 @@
+<div class="container">
+	<%= form_for (@order), url: {action: "place_order"} do |f| %>
+		<!-- Contact Info Section -->
+		<fieldset>
+			<legend>Contact Information</legend>
+			<%= f.text_field :email %>
+			<%= f.text_field :phone_number %>
+		</fieldset>
+
+		<fieldset>
+			<legend>Shipping Address</legend>
+			<%= f.text_field :ship_to_first_name %>
+		</fieldset>
+	  	<%= f.submit "Place Order" %>
+	<% end %>
+</div>

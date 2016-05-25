@@ -1,30 +1,22 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  #before_action :cart_action, only: [:show]
-  # GET /photos
-  # GET /photos.json
+  
   def index
     @photos = current_user.photos.includes(:cart_item)
   end
-  # GET /photos/1
-  # GET /photos/1.json
+
   def show
      @photo = Photo.find(params[:id])
-     #@cart_action = @photo.cart_action current_user.try :id
   end
 
-  # GET /photos/new
   def new
     @photo = Photo.new
   end
 
-  # GET /photos/1/edit
   def edit
   end
 
-  # POST /photos
-  # POST /photos.json
   def create
     @photo = current_user.photos.build(photo_params)
 
@@ -39,8 +31,6 @@ class PhotosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /photos/1
-  # PATCH/PUT /photos/1.json
   def update
     respond_to do |format|
       if @photo.update(photo_params)
@@ -53,8 +43,6 @@ class PhotosController < ApplicationController
     end
   end
 
-  # DELETE /photos/1
-  # DELETE /photos/1.json
   def destroy
     @photo.destroy
 

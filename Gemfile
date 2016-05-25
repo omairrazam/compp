@@ -36,7 +36,10 @@ gem 'puma'
 gem 'devise'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'bootstrap-sass', '~> 3.3.6'
 
+
+gem 'byebug', '~> 6.0', '>= 6.0.2'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 

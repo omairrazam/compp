@@ -8,7 +8,7 @@ class Admin::OrderController < ApplicationController
 	      conditions = "status = '#{@status}'"
 	    end
 	    @page_title = "Listing #{@status} orders"
-		@orders = Admin::Order.all
+		@orders = Order.all
 		
 	end
 

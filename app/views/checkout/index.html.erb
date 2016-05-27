@@ -1,16 +1,22 @@
-<div class="container">
-	<%= form_for (@order), url: {action: "place_order"} do |f| %>
-		<!-- Contact Info Section -->
-		<fieldset>
-			<legend>Contact Information</legend>
-			<%= f.text_field :email %>
-			<%= f.text_field :phone_number %>
-		</fieldset>
+<% content_for :checkout do %>
+	<%= javascript_include_tag 'checkout' %>
+	<%= stylesheet_link_tag    'checkout', media: 'all' %>
+<% end %>
 
-		<fieldset>
-			<legend>Shipping Address</legend>
-			<%= f.text_field :ship_to_first_name %>
-		</fieldset>
-	  	<%= f.submit "Place Order" %>
-	<% end %>
+<!-- multistep form -->
+<div class = "container"> 
+	<div class = "row">
+		<%= form_for (@order), url: {action: "place_order"} do |f| %>
+			<fieldset>
+				<h2 class="fs-title">Address Details</h2>
+				<%= f.text_field :ship_to_first_name, placeholder: "First Name" %>
+				<%= f.text_field :ship_to_last_name, placeholder: "Last Name" %>
+				<%= f.text_field :phone_number, placeholder: "Phone" %>
+				<%= f.text_area  :ship_to_address, placeholder: "Address" %>
+				<%= f.submit "Place Order", :class => "action-button" %>
+			</fieldset>
+		<% end %>
+	</div>
 </div>
+
+

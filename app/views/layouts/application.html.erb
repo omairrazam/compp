@@ -5,6 +5,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= yield :checkout %>
 
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700,600" rel="stylesheet" type="text/css">
 </head>
@@ -12,17 +13,19 @@
 
 <!-- Error Messages only shown for logged in windows-->
 <% if user_signed_in? %>
+	<div class = "container">
+		<div class = "row">
+			<% if notice %>
+			<p class="alert alert-info"><%= notice %></p>
+			<% end %>
 
-	<% if notice %>
-	<p class="alert alert-info"><%= notice %></p>
-	<% end %>
+			<% if alert %>
+			<p class="alert alert-danger"><%= alert %></p>
+			<% end %>
 
-	<% if alert %>
-	<p class="alert alert-danger"><%= alert %></p>
-	<% end %>
-
-	<%= render :partial => "partials/header" %>
-
+			<%= render :partial => "partials/header" %>
+		</div>
+	</div>
 <% end %>
 <!-- End Error Messages -->
 

@@ -1,46 +1,8 @@
-<!--<div class = "container">
-	<% if flash[:cart_notice] %>
-	  <%= render :partial => "carts/partials/cart_notice" %>
-	<% end %>
-  	<h3>Your Shopping Cart</h3>
-
-	<table class="table table-bordered">
-	    <thead>
-		    <tr>
-				<th>ID</th>
-				<th>Status</th>
-				<th>Price</th>
-				<th>Qty</th>
-				<th>Created at</th>
-				<th>Updated at</th>
-		    </tr>
-	    </thead>
-
-	    <tbody>
-		    <% for order in @orders %>
-				<tr>
-				<td align="right"><%= order.id %></td>
-				<td align="right"><%= order.status %></td>
-				<td align="right"><%= order.total %></td>
-				<td align="right"><%= order.photos.size %></td>
-				<td align="right"><%= order.created_at.strftime("%Y-%m-%d %I:%M") %></td>
-				<td align="right"><%= order.updated_at.strftime("%Y-%m-%d %I:%M") %></td>
-				<td><%= link_to "View", admin_order_path(order) %></td>
-				</tr>
-			<% end %>
-		</tbody>
-
-	    <tfoot>
-	    </tfoot>
-	</table>
-</div>-->
-
-
  <!--main content start-->
-    <section id="main-content">
-        <section class="wrapper">
-        <!-- page start-->
-            <div class="row">
+<section id="main-content">
+    <section class="wrapper">
+    <!-- page start-->
+        <div class="row">
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
@@ -60,20 +22,19 @@
                                 <th>Qunatity</th>
                                 <th >Status</th>
                                 <th>Created At</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                       
                            		<%= render :partial => @orders %>  
                             </tbody>
                         </table>
                     </div>
                 </section>
             </div>
-        </div>
-            
-        <!-- page end-->
-        </section>
+        </div>  
+    <!-- page end-->
     </section>
-    <!--main content end-->
+</section>
+<!--main content end-->
 

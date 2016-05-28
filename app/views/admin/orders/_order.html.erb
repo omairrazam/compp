@@ -4,4 +4,5 @@
     <td><%= order.photos.size %></td>
     <td><span class="label label-info label-mini"><%= order.status %></span></td>
     <td><%= order.created_at %></td>
+    <td><%= link_to "View", admin_order_path(order) %></td>
 </tr>

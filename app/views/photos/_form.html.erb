@@ -11,9 +11,10 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
+    <%= f.label "Select Image:", class: "label label-default" %>
+    <%= f.file_field :image, class: "file" %>
   </div>
   
   <%= f.submit 'UPLOAD', :class => 'btn btn-primary ' %>
 <% end %>
+   

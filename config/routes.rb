@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   match 'checkout/thank_you', to: 'checkout#thank_you', via: [:get]
   
   namespace :admin do
-    resources  :order
+    resources  :orders
+    resources  :dashboard
   end
   
   resources  :checkout

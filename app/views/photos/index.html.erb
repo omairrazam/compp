@@ -2,9 +2,7 @@
 	<!-- begin:content -->
 	<div class="container">
 	    <div class="row container-gallery">
-	        <% @photos.each do |photo| %>
-	          <%= render :partial => "image_show",:locals => {:photo => photo} %>
-	        <% end %>
+	    	<%= render :partial => @photos %>   
 	    </div>
 	</div>
 	<!-- end:content -->

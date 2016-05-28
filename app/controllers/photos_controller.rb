@@ -1,6 +1,6 @@
-class PhotosController < ApplicationController
+class PhotosController < BaseController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+ 
   
   def index
     @photos = current_user.photos.includes(:cart_item)

@@ -1,4 +1,7 @@
-
+<% content_for :checkout do %>
+  <%= javascript_include_tag 'devise/custom' %>
+  <%= stylesheet_link_tag    'devise/custom', media: 'all' %>
+<% end %>
 
 <!-- Register Form Begin -->
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => 'register-form'}) do |f| %>

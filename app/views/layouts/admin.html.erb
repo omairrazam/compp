@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PicturePerfect</title>
+  <%= javascript_include_tag 'admin/application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'admin/application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <section id="container">
+        <!--header start-->
+        <%= render partial: "admin/dashboard/partials/header" %>
+        <!--header end-->
+        <!--sidebar start-->
+        <%= render partial: "admin/dashboard/partials/left_sidebar" %>
+        <!--sidebar end-->
+        <!--content start-->
+        <%= yield %>
+        <!--content end-->
+    </section>
+</body>
+</html>

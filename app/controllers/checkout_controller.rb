@@ -1,5 +1,5 @@
-class CheckoutController < ApplicationController
-  	before_filter :initialize_cart
+class CheckoutController < BaseController
+  	
   	
 	def index
 	    @order = Order.new

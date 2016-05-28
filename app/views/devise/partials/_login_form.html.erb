@@ -1,4 +1,7 @@
-
+<% content_for :checkout do %>
+  <%= javascript_include_tag 'devise/custom' %>
+  <%= stylesheet_link_tag    'devise/custom', media: 'all' %>
+<% end %>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'login-form'}) do |f| %>
       <p class="notice"><%= notice %></p>
@@ -18,5 +21,4 @@
         </div>
         
         <p class="message">Not registered? <a href="#">Create an account</a></p>
-
 <% end %><!-- Login Form End -->

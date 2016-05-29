@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources  :orders
     resources  :dashboards
   end
+
+  match 'admin', to: 'admin/dashboards#index', via: [:get]
   
   resources  :checkout
   resources  :photos

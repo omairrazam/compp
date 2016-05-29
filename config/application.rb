@@ -21,7 +21,6 @@ module RubyGettingStarted
     # config.i18n.default_locale = :de
     
     # After deploying to heroku if assets are not precompiling then uncomment following line.
-    # config.assets.paths << Rails.root.join('vendor', 'assets')
-
+     config.assets.paths << Rails.root.join('vendor', 'assets')
   end
 end

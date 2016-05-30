@@ -30,10 +30,22 @@
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
-  config.assets.raise_runtime_errors = true
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   
+  config.assets.raise_runtime_errors = true
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3006 }
+
+  config.action_mailer.delivery_method = :smtp
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+   :address              => "smtp.gmail.com",
+   :port                 => 587,
+   :domain               => "gmail.com",
+   :user_name            => ENV['gmail_username'],
+   :password             => ENV['gmail_password'],
+   :authentication       => "plain",
+   :enable_starttls_auto => true
+  }
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 

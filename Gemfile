@@ -39,6 +39,7 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 3.3', '<= 3.3.5'
 gem 'aws-sdk', '< 2.0'
 gem 'byebug', '~> 6.0', '>= 6.0.2'
+gem "figaro"
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

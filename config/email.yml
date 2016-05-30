@@ -2,13 +2,13 @@ development:
   :address: smtp.gmail.com
   :port: 587
   :authentication: plain
-  :user_name            : ENV['gmail_username'],
-  :password             : ENV['gmail_password'],
+  :user_name            : "dev.testing321@gmail.com",
+  :password             : "HazratMuhammad1",
   :enable_starttls_auto: true
 production:
   :address: smtp.gmail.com
   :port: 587
   :authentication: plain
-  :user_name            : ENV['gmail_username'],
-  :password             : ENV['gmail_password'],
+  :user_name            : "dev.testing321@gmail.com",
+  :password             : "HazratMuhammad1",
   :enable_starttls_auto: true

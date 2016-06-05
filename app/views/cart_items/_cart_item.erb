@@ -1,0 +1,14 @@
+<tr>
+  <td>
+    <%= link_to cart_item.photo do %>
+      <%= image_tag cart_item.photo.image(:mini) %>
+    <% end %>
+	</td>
+  <td></td>
+  <td><input type="number" name="qty" min="1" value = <%= cart_item.qty %> ></td>
+  <td>$<%= sprintf("%0.2f", cart_item.total) %></td>
+  <td>$<%= sprintf("%0.2f", cart_item.total) %></td>
+  <td>
+    <%= link_to "remove",carts_remove_path(:id => cart_item.photo.id), method: :post,data: {confirm: 'Are you sure'}, class: "btn btn-danger btn-xs"%>
+  </td>
+</tr>

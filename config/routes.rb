@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  match 'checkout/thank_you', to: 'checkout#thank_you', via: [:get]
+  match 'orders/thank_you', to: 'orders#thank_you', via: [:get]
   
   namespace :admin do
     resources  :orders
@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   match 'admin', to: 'admin/dashboards#index', via: [:get]
   
-  resources  :checkout
+  resources  :orders do
+    resources :addresses
+  end
   resources  :photos
   resources  :carts
 
@@ -17,13 +19,13 @@ Rails.application.routes.draw do
   
   match 'carts/add', to: 'carts#add', via: [:post]
   match 'carts/remove', to: 'carts#remove', via: [:post]
-  match 'checkout/place_order', to: 'checkout#place_order', via: [:post]
+  match 'orders/place_order', to: 'orders#place_order', via: [:post]
   
   root 'photos#index'
   
-  #get 'checkout/thank_you'
+  #get 'orders/thank_you'
   #get 'carts/show'
-  # The priority is based upon order of creation: first created -> highest priority.
+  # The priority is based upon orders of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"

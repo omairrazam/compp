@@ -1,0 +1,32 @@
+
+
+
+
+
+
+<%= form_for [@order,@address] do |f| %>
+    <fieldset>
+      <% if @address.errors.any? %>
+          <div class="alert alert-danger" id="error_explanation">
+            <ul>
+              <% @address.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+
+      <h2 class="fs-title">Address Details</h2>
+      <%= f.text_field :email, placeholder: "Email", :required => true%>
+      <%= f.text_field :first_name, placeholder: "First Name", :required => true %>
+      <%= f.text_field :last_name, placeholder: "Last Name", :required => true %>
+      <%= f.text_field :phone_number, placeholder: "Phone", :required => true %>
+      <%= f.text_area  :address, placeholder: "Address", :required => true %>
+      <%= f.text_field :city, placeholder: "City", :required => true %>
+      <%= f.text_field :country, placeholder: "Country", :required => true %>
+      <%= f.text_field :postal_code, placeholder: "Postal Code", :required => true %>
+      <%= f.submit "Place Order", :class => "action-button" %>
+    </fieldset>
+<% end %>
+

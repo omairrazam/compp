@@ -22,7 +22,6 @@ class PhotosController < BaseController
 
     respond_to do |format|
       if @photo.save
-        ComppMailer.sample_email(User.first).deliver
         format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
         format.json { render :show, status: :created, location: @photo }
       else

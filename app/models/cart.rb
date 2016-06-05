@@ -8,8 +8,9 @@ class Cart < ActiveRecord::Base
 
   def add(photo_id)
     photo = Photo.find(photo_id)
-    photo.create_cart_item(:qty => 2,
-                           :unit_price => 10)
+    photo.create_cart_item(:qty        => GeneralSettingsConstants::DEFAULT_QUANTITY,
+                           :unit_price => GeneralSettingsConstants::UNIT_PRICE,
+                           :item_tot_price => GeneralSettingsConstants::DEFAULT_QUANTITY * GeneralSettingsConstants::UNIT_PRICE)
     photo.cart = self
   end
 

@@ -11,10 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160430214437) do
+ActiveRecord::Schema.define(version: 20160605174750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "email"
+    t.string   "phone_number"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "postal_code"
+    t.string   "country"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "addresses_orders", id: false, force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "address_id"
+  end
+
+  add_index "addresses_orders", ["address_id"], name: "index_addresses_orders_on_address_id", using: :btree
+  add_index "addresses_orders", ["order_id"], name: "index_addresses_orders_on_order_id", using: :btree
 
   create_table "cart_items", force: :cascade do |t|
     t.integer  "photo_id"
@@ -44,6 +65,7 @@ ActiveRecord::Schema.define(version: 20160430214437) do
     t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "unit_price"
   end
 
   create_table "orders", force: :cascade do |t|

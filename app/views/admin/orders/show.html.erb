@@ -1,30 +1,30 @@
 <%#= render :partial => 'navigation' %>
 <div class = "container">
-  <p> Order total $<%#= @order.total %></p>
+  <p> Order total $<%#= @orders.total %></p>
   <h2>Contact Information</h2>
   <dl>
     <dt>ID</dt>
-    <dd><%#= @order.id %></dd>
+    <dd><%#= @orders.id %></dd>
     <dt>Email</dt>
-    <dd><%#= @order.email %></dd>
+    <dd><%#= @orders.email %></dd>
     <dt>Phone number</dt>
-    <dd><%#= @order.phone_number %></dd>
+    <dd><%#= @orders.phone_number %></dd>
   </dl>
 
   <h2>Shipping Address</h2>
   <dl>
     <dt>First name</dt>
-    <dd><%#= @order.ship_to_first_name %></dd>
+    <dd><%#= @orders.ship_to_first_name %></dd>
     <dt>Last name</dt>
-    <dd><%#= @order.ship_to_last_name %></dd>
+    <dd><%#= @orders.ship_to_last_name %></dd>
     <dt>Address</dt>
-    <dd><%#= @order.ship_to_address %></dd>
+    <dd><%#= @orders.ship_to_address %></dd>
     <dt>City</dt>
-    <dd><%#= @order.ship_to_city %></dd>
+    <dd><%#= @orders.ship_to_city %></dd>
     <dt>Postal/Zip code</dt>
-    <dd><%#= @order.ship_to_postal_code %></dd>
+    <dd><%#= @orders.ship_to_postal_code %></dd>
     <dt>Country</dt>
-    <dd><%#= @order.ship_to_country %></dd>
+    <dd><%#= @orders.ship_to_country %></dd>
   </dl>
 
 	<h2>Order Details</h2>

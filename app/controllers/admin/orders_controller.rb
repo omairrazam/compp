@@ -14,7 +14,7 @@ class Admin::OrdersController < Admin::BaseController
 	end
 
 	def show
-		@page_title = "Displaying order ##{params[:id]}"
+		@page_title = "Displaying orders ##{params[:id]}"
         @order = Order.find(params[:id])
 	end
 

@@ -1,0 +1,10 @@
+<tr>
+  <td>
+    <%= link_to order_item.photo do %>
+        <%= image_tag order_item.photo.image(:mini) %>
+    <% end %>
+  </td>
+  <td class="text-center"><%= order_item.unit_price %></td>
+  <td class="text-center"><%= order_item.amount %></td>
+  <td class="text-right"><%= order_item.price %></td>
+</tr>

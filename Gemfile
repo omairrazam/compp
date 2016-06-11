@@ -41,7 +41,7 @@ gem 'aws-sdk', '< 2.0'
 #gem 'byebug', '~> 6.0', '>= 6.0.2'
 gem "figaro"
 gem 'simple_form'
-
+gem 'omniauth-facebook'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 

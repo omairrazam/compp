@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   match 'orders/thank_you', to: 'orders#thank_you', via: [:get]
-  
+
   namespace :admin do
     resources  :orders
     resources  :dashboards
@@ -14,15 +14,18 @@ Rails.application.routes.draw do
   resources  :photos
   resources  :carts
 
-  devise_for :users
 
-  
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   match 'carts/add', to: 'carts#add', via: [:post]
   match 'carts/remove', to: 'carts#remove', via: [:post]
   match 'orders/place_order', to: 'orders#place_order', via: [:post]
   
   root 'photos#index'
-  
+
+  devise_scope :user do
+    #delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
   #get 'orders/thank_you'
   #get 'carts/show'
   # The priority is based upon orders of creation: first created -> highest priority.

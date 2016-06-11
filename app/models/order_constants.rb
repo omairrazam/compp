@@ -1,4 +1,4 @@
-class OrderConstants <  ActiveRecord::Base
+class OrderConstants
   #order states
   STATE_CART       = "cart"
   STATE_CONFIRM    = "confirm"

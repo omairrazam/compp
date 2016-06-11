@@ -24,7 +24,7 @@ class Order < ActiveRecord::Base
 	end
 
 	def close
-        self.status = 'closed'
+        status = 'closed'
         save!
 	end
 

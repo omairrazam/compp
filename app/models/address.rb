@@ -8,6 +8,12 @@ class Address < ActiveRecord::Base
 
 
   def name
+    if self.first_name.nil?
+      self.first_name = ''
+    end
+    if self.last_name.nil?
+      self.last_name = ''
+    end
     self.first_name + ' ' + self.last_name
   end
 

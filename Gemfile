@@ -46,5 +46,5 @@ gem 'omniauth-facebook'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-
 gem "jquery-fileupload-rails"
+
